@@ -1,0 +1,102 @@
+@import '../../App.scss';
+
+.products {
+	text-align: center;
+	padding-top: 7rem;
+}
+
+.goods {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+
+	grid-gap: 2rem;
+	overflow: hidden;
+
+	&__wrapper {
+		height: 300px;
+
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__wrapper:hover img {
+		transform: scale(1.25);
+	}
+	&__wrapper:hover h3 {
+		transform: scale(1.25);
+		opacity: 1;
+	}
+
+	&__wrapper:hover > &__cover {
+		width: 90%;
+		height: 85%;
+	}
+
+	&__cover {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		overflow: hidden;
+		margin: auto;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		transition: all 0.5s ease-out;
+	}
+
+	&__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: all 0.2s ease-out;
+	}
+
+	&__heading {
+		position: absolute;
+		opacity: 0;
+		transition: all 0.2s ease-out;
+		text-shadow: 1px 1px rgba($color-dark, 0.3);
+	}
+}
+
+.category {
+	margin-top: 4rem;
+
+	&__heading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 50px;
+		margin-bottom: 2rem;
+	}
+
+	&__icon {
+		width: 100%;
+		height: 100%;
+
+		&--dark {
+			fill: $color-dark;
+		}
+	}
+}
+
+.armchairs {
+	margin-right: 2rem;
+	width: 47px;
+	height: 40px;
+}
+.two-seat-sofas {
+	margin-right: 2rem;
+	width: 93px;
+	height: 40px;
+}
+.three-seat-sofas {
+	margin-right: 2rem;
+	width: 146px;
+	height: 40px;
+}

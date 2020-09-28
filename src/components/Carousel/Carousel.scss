@@ -1,0 +1,81 @@
+@import '../../App.scss';
+
+.carousel {
+	width: 100%;
+	height: 98vh;
+	overflow: hidden;
+	// position: absolute;
+	// top: 0;
+	// left: 0;
+
+	&__track-container {
+		background-color: $color-dark;
+		height: 100%;
+		position: relative;
+		z-index: 0;
+	}
+
+	&__track {
+		display: block;
+		list-style: none;
+		position: relative;
+		height: 100%;
+		// transition: transform 1s ease-in-out;
+	}
+
+	&__slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		// flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__indicators {
+		// background-color: rgba(orangered, 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: 175px;
+		height: 3rem;
+		margin-top: -40px;
+		position: absolute;
+		// z-index: 80;
+	}
+
+	&__indicator {
+		border: 0;
+		outline: none;
+		margin: 0 0.5rem;
+		width: 3rem;
+		height: 0.8rem;
+		background-color: $color-light;
+		opacity: 0.5;
+		transition: all 0.2s cubic-bezier(0.25, 0.1, 0.5, 1.5);
+		cursor: pointer;
+
+		&:hover,
+		&.current-slide {
+			transform: scaleY(1.6);
+			opacity: 1;
+		}
+	}
+}
+
+.slide {
+	&__img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		// z-index: -1;
+	}
+
+	&__content {
+		width: 50%;
+	}
+}
