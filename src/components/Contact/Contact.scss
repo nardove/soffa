@@ -14,10 +14,16 @@
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 2rem;
 		justify-content: center;
-	}
 
-	// &__form {
-	// }
+		@media only screen and (max-width: $extra_large) {
+			grid-template-columns: 60% 40%;
+		}
+		@media only screen and (max-width: $large) {
+			grid-gap: 8rem;
+			grid-template-rows: repeat(2, min-content);
+			grid-template-columns: 1fr;
+		}
+	}
 
 	&__address {
 		display: grid;
@@ -66,6 +72,11 @@
 	grid-template-rows: repeat(4, 40px);
 	grid-gap: 2rem;
 
+	@media only screen and (max-width: $medium) {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(3, 40px) 200px 40px;
+	}
+
 	&__input {
 		font-family: 'Varta', sans-serif;
 		font-size: 2rem;
@@ -79,6 +90,10 @@
 		}
 		&:focus {
 			background-color: rgba($color-dark, 0.01);
+		}
+
+		@media only screen and (max-width: $extra_large) {
+			width: 100%;
 		}
 	}
 
@@ -100,6 +115,10 @@
 			outline-color: $color-dark;
 			border-radius: 0;
 		}
+
+		@media only screen and (max-width: $extra_large) {
+			width: 100%;
+		}
 	}
 
 	&__textarea {
@@ -112,6 +131,11 @@
 		background-color: rgba($color-dark, 0.05);
 		padding: 1rem;
 		outline-color: $color-dark;
+
+		@media only screen and (max-width: $medium) {
+			grid-column: 1;
+			grid-row: 4;
+		}
 	}
 
 	&__action {

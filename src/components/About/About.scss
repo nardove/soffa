@@ -10,7 +10,11 @@
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 6rem;
 
-		// height: 600px;
+		@media only screen and (max-width: $large) {
+			grid-template-rows: 300px 1fr;
+			grid-template-columns: 1fr;
+			grid-gap: 3rem;
+		}
 	}
 
 	&__description {

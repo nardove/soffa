@@ -3,7 +3,8 @@
 
 /*
 Todo:
-- Fix content scroll when search is open
+- Fix search modal when browser is resized
+- same for the Carousel
 */
 
 import React from 'react';
@@ -164,14 +165,14 @@ function MainNav() {
 							Contact
 						</a>
 					</li>
-					<li className='nav__item'>
-						<button className='nav__btn' onClick={searchBtnClickHandler}>
-							<svg className='svg__icon svg__icon--small'>
-								<use xlinkHref={svgSprite + '#search'}></use>
-							</svg>
-						</button>
-					</li>
+					{/* <li className='nav__item'>
+					</li> */}
 				</ul>
+				<button className='nav__btn' onClick={searchBtnClickHandler}>
+					<svg className='svg__icon svg__icon--small'>
+						<use xlinkHref={svgSprite + '#search'}></use>
+					</svg>
+				</button>
 			</nav>
 		</div>
 	);

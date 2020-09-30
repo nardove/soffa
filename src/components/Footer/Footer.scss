@@ -2,7 +2,6 @@
 
 .footer {
 	margin-top: 8rem;
-	// width: 100%;
 	height: 320px;
 
 	background-color: $color-dark;
@@ -18,6 +17,10 @@
 	grid-row-gap: 8rem;
 	align-content: center;
 	justify-content: center;
+
+	@media only screen and (max-width: $extra_large) {
+		margin-top: 2rem;
+	}
 
 	&__form {
 		display: flex;

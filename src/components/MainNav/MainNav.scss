@@ -9,12 +9,13 @@
 
 .nav {
 	display: grid;
-	grid-template-columns: 101px 1fr;
+	grid-template-columns: 101px 1fr 40px;
 	justify-content: space-between;
-	align-items: flex-start;
+	// align-items: flex-start;
+	align-items: center;
 	max-width: 100%;
 	height: 100px;
-	padding-top: 3rem;
+	padding-top: 1rem;
 
 	&__logo {
 		fill: $color-light;
@@ -40,6 +41,13 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin-right: 2rem;
+	}
+
+	@media only screen and (max-width: $medium) {
+		&__list {
+			display: none;
+		}
 	}
 
 	&__item {
@@ -152,8 +160,10 @@
 		height: 100vh;
 		display: grid;
 		grid-template-rows: 100px 100px min-content min-content;
+		grid-gap: 5rem;
 		align-items: center;
 		justify-items: center;
+		text-align: center;
 	}
 
 	&__input {

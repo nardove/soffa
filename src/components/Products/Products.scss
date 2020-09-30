@@ -12,6 +12,11 @@
 	grid-gap: 2rem;
 	overflow: hidden;
 
+	@media only screen and (max-width: $medium) {
+		grid-template-rows: repeat(4, 1fr);
+		grid-template-columns: 1fr;
+	}
+
 	&__wrapper {
 		height: 300px;
 

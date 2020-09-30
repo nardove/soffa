@@ -9,9 +9,27 @@ $color-dark: #211c1d;
 
 $shadow: drop-shadow(0 1px 1px rgba($color-dark, 0.5));
 
+$extra_large: 75em; // 1200
+$large: 62.5em; // 1000
+$medium: 48em; //768
+$small: 37.5em; // 600
+$extra_small: 23.5em; // 375
+
 .container {
 	width: 1200px;
 	margin: 0 auto;
+
+	@media only screen and (max-width: $extra_large) {
+		width: 1000px;
+	}
+
+	@media only screen and (max-width: $large) {
+		width: 768px;
+	}
+
+	@media only screen and (max-width: $medium) {
+		width: 600px;
+	}
 }
 
 .shadow {
@@ -33,16 +51,31 @@ $shadow: drop-shadow(0 1px 1px rgba($color-dark, 0.5));
 	&--large {
 		font-size: 8rem;
 		line-height: 6rem;
+
+		@media only screen and (max-width: $extra_large) {
+			font-size: 6rem;
+			line-height: 5rem;
+		}
 	}
 
 	&--medium {
 		font-size: 6rem;
-		line-height: 3rem;
+		line-height: 6rem;
+
+		@media only screen and (max-width: $extra_large) {
+			font-size: 5rem;
+			line-height: 4rem;
+		}
 	}
 
 	&--small {
 		font-size: 4rem;
-		line-height: 2rem;
+		line-height: 3rem;
+
+		@media only screen and (max-width: $extra_large) {
+			font-size: 3rem;
+			line-height: 2rem;
+		}
 	}
 }
 
@@ -65,12 +98,17 @@ $shadow: drop-shadow(0 1px 1px rgba($color-dark, 0.5));
 	font-size: 2rem;
 	margin: 4rem 0;
 	font-weight: 100;
+
 	&--light {
 		color: $color-light;
 		// filter: $shadow;
 	}
 	&--dark {
 		color: $color-dark;
+	}
+
+	@media only screen and (max-width: $extra_large) {
+		margin: 2rem 0;
 	}
 }
 
