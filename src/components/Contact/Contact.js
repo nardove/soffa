@@ -7,7 +7,7 @@ function Contact() {
 		<section id='contact' className='contact container'>
 			<div className='contact__wrapper'>
 				<div className='contact__form'>
-					<h3 className='heading heading--small heading--dark'>How can we help?</h3>
+					<h3 className='heading heading--small dark'>How can we help?</h3>
 					<p className='description'>
 						Please fill in the form below, we will get back to you as soon as possible
 					</p>
@@ -31,15 +31,19 @@ function Contact() {
 						<div className='form__action'>
 							<button className='form__submit btn btn--dark'>
 								Submit
-								<svg className='icon btn__icon btn__icon--dark'>
-									<use xlinkHref={svgSprite + '#arrow-forward'}></use>
-								</svg>
+								<div className='svg-icon-container'>
+									<svg className='svg svg--dark'>
+										<use xlinkHref={svgSprite + '#arrow-forward'}></use>
+									</svg>
+								</div>
 							</button>
 							<button className='form__cancel btn btn--dark'>
 								Cancel
-								<svg className='icon btn__icon btn__icon--dark'>
-									<use xlinkHref={svgSprite + '#close'}></use>
-								</svg>
+								<div className='svg-icon-container'>
+									<svg className='svg svg--dark'>
+										<use xlinkHref={svgSprite + '#close'}></use>
+									</svg>
+								</div>
 							</button>
 						</div>
 					</form>
@@ -53,7 +57,7 @@ function Contact() {
 						<p className='location__address'>P00 00C</p>
 						<p className='location__address'>+44 (0) 7777 555 555</p>
 						<p className='location__address'>
-							<a href='mailto:hello@soffa.co.uk' className='link link--dark'>
+							<a href='mailto:hello@soffa.co.uk' className='link dark'>
 								hello@soffa.co.uk
 							</a>
 						</p>

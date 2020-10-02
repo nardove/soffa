@@ -18,7 +18,7 @@ function Products(props) {
 							<use xlinkHref={svgSprite + '#' + category_icon}></use>
 						</svg>
 					</div>
-					<h5 className='heading heading--dark heading--small'>{data.category}</h5>
+					<h5 className='heading heading--small dark'>{data.category}</h5>
 				</div>
 
 				<div className='goods'>
@@ -31,7 +31,7 @@ function Products(props) {
 										src={sofa.photo}
 										alt={sofa.name}
 									/>
-									<h3 className='goods__heading heading heading--small heading--light shadow'>
+									<h3 className='goods__heading heading heading--small light shadow'>
 										{sofa.name}
 									</h3>
 								</div>
@@ -47,8 +47,8 @@ function Products(props) {
 
 	return (
 		<section className='products container'>
-			<h2 className='heading heading--dark heading--medium'>Hand-crafted</h2>
-			<h4 className='sub-heading sub-heading--dark'>made to last</h4>
+			<h2 className='heading heading--medium dark'>Hand-crafted</h2>
+			<h4 className='sub-heading dark'>made to last</h4>
 			{categories}
 		</section>
 	);

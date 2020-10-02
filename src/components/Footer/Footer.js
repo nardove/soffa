@@ -10,7 +10,7 @@ function Footer() {
 	return (
 		<section id='footer' className='footer'>
 			<form className='footer__form'>
-				<label className='footer__form__label' htmlFor='email'>
+				<label className='footer__form__label light' htmlFor='email'>
 					Get our latest news and offers
 				</label>
 				<div className='footer__form__wrapper'>
@@ -21,29 +21,37 @@ function Footer() {
 						placeholder='Subscribe now'
 					/>
 					<button className='footer__form__btn' onClick={validateAndSubmitForm}>
-						<svg className='footer__form__btn__icon'>
-							<use xlinkHref={svgSprite + '#arrow-forward'}></use>
-						</svg>
+						<div className='svg-icon-container'>
+							<svg className='svg svg--light'>
+								<use xlinkHref={svgSprite + '#arrow-forward'}></use>
+							</svg>
+						</div>
 					</button>
 				</div>
 			</form>
 
-			<div className='footer__social-media'>
+			<div className='footer__social-media light'>
 				or follow us on
-				<svg className='icon icon--light'>
-					<use xlinkHref={svgSprite + '#instagram'}></use>
-				</svg>
-				<svg className='icon icon--light'>
-					<use xlinkHref={svgSprite + '#facebook'}></use>
-				</svg>
-				<svg className='icon icon--light'>
-					<use xlinkHref={svgSprite + '#twitter'}></use>
-				</svg>
+				<div className='svg-icon-container'>
+					<svg className='svg svg--light'>
+						<use xlinkHref={svgSprite + '#instagram'}></use>
+					</svg>
+				</div>
+				<div className='svg-icon-container'>
+					<svg className='svg svg--light'>
+						<use xlinkHref={svgSprite + '#facebook'}></use>
+					</svg>
+				</div>
+				<div className='svg-icon-container'>
+					<svg className='svg svg--light'>
+						<use xlinkHref={svgSprite + '#twitter'}></use>
+					</svg>
+				</div>
 			</div>
 
-			<div className='footer__copy'>
+			<div className='footer__copy light'>
 				&copy; 2020
-				<svg className='footer__logo'>
+				<svg className='footer__logo svg--light'>
 					<use xlinkHref={svgSprite + '#logo'}></use>
 				</svg>
 			</div>

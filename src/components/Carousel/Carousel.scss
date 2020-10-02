@@ -4,9 +4,10 @@
 	width: 100%;
 	height: 98vh;
 	overflow: hidden;
-	// position: absolute;
-	// top: 0;
-	// left: 0;
+
+	@media only screen and (max-width: $extra_small) {
+		height: 85vh;
+	}
 
 	&__track-container {
 		background-color: $color-dark;
@@ -20,7 +21,6 @@
 		list-style: none;
 		position: relative;
 		height: 100%;
-		// transition: transform 1s ease-in-out;
 	}
 
 	&__slide {
@@ -30,13 +30,11 @@
 		width: 100%;
 		height: 100%;
 		display: flex;
-		// flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}
 
 	&__indicators {
-		// background-color: rgba(orangered, 0.5);
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
@@ -44,7 +42,6 @@
 		height: 3rem;
 		margin-top: -40px;
 		position: absolute;
-		// z-index: 80;
 	}
 
 	&__indicator {
@@ -72,7 +69,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		// z-index: -1;
 	}
 
 	&__content {
@@ -80,6 +76,10 @@
 
 		@media only screen and (max-width: $extra_large) {
 			width: 70%;
+		}
+
+		@media only screen and (max-width: $small) {
+			width: 100%;
 		}
 	}
 }

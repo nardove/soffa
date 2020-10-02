@@ -189,18 +189,18 @@ function Carousel(props) {
 				<img className='slide__img' src={'./' + data['image-url']} alt='Livingroom' />
 				<div className='container'>
 					<div className='slide__content'>
-						<h3 className='heading heading--light heading--large shadow'>
-							{data.title}
-						</h3>
-						<p className='description description--light shadow'>{data.description}</p>
+						<h3 className='heading heading--large light shadow'>{data.title}</h3>
+						<p className='description light shadow'>{data.description}</p>
 						<button
-							className='btn btn--light'
+							className='btn btn--light light'
 							onMouseOver={mouseOver}
 							onMouseOut={mouseOut}>
 							Read more
-							<svg className='icon btn__icon btn__icon--light'>
-								<use xlinkHref={svgSprite + '#call-made'}></use>
-							</svg>
+							<div className='svg-icon-container'>
+								<svg className='svg svg--light'>
+									<use xlinkHref={svgSprite + '#call-made'}></use>
+								</svg>
+							</div>
 						</button>
 					</div>
 				</div>

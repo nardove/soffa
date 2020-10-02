@@ -9,24 +9,20 @@
 
 .nav {
 	display: grid;
-	grid-template-columns: 101px 1fr 40px;
+	grid-template-columns: min-content 1fr min-content min-content;
 	justify-content: space-between;
-	// align-items: flex-start;
 	align-items: center;
-	max-width: 100%;
+	width: 100%;
 	height: 100px;
 	padding-top: 1rem;
 
-	&__logo {
-		fill: $color-light;
+	&__home {
 		width: 101px;
 		height: 37px;
-		filter: $shadow;
 	}
 
 	&__search {
 		justify-self: end;
-		fill: $color-light;
 		width: 20px;
 		height: 20px;
 
@@ -44,23 +40,37 @@
 		margin-right: 2rem;
 	}
 
+	& > #burger-btn {
+		display: none;
+		margin-right: 2rem;
+	}
+
 	@media only screen and (max-width: $medium) {
 		&__list {
 			display: none;
 		}
+
+		& > .icon-btn {
+			justify-self: flex-end;
+		}
+
+		& > #burger-btn {
+			display: block;
+		}
 	}
 
 	&__item {
-		color: $color-light;
 		font-size: 2rem;
 		list-style: none;
 		padding: 0 2rem;
 		position: relative;
 
+		// Dropdow menu call
 		&:first-child {
 			display: flex;
 		}
-		&:first-child:hover .icon {
+		&:first-child:hover .svg-container {
+			opacity: 0.6;
 			animation: arrowdown 0.5s;
 		}
 		&:first-child:hover .dropdown__list {
@@ -73,36 +83,8 @@
 			padding: 0 0 0 2rem;
 		}
 	}
-
-	&__btn {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-family: 'Varta', sans-serif;
-		font-size: 2rem;
-		color: $color-light;
-		background: none;
-		border: none;
-		outline: none;
-		cursor: pointer;
-
-		transition: all 0.2s;
-
-		&:hover {
-			opacity: 0.6;
-		}
-		&:hover + .icon {
-			opacity: 0.6;
-			animation: arrowdown 0.5s;
-		}
-
-		&:focus {
-			opacity: 0.6;
-		}
-	}
 }
 
-// --- Products Dropdown menu ---
 .dropdown {
 	&__list {
 		position: absolute;
@@ -147,7 +129,6 @@
 	}
 }
 
-// --- Search ---
 .search {
 	position: fixed;
 	top: 0;
@@ -157,10 +138,11 @@
 	height: 100vh;
 
 	&__content {
+		margin-top: 14rem;
 		height: 100vh;
 		display: grid;
-		grid-template-rows: 100px 100px min-content min-content;
-		grid-gap: 5rem;
+		grid-template-rows: 100px min-content min-content;
+		grid-gap: 3rem;
 		align-items: center;
 		justify-items: center;
 		text-align: center;
@@ -171,33 +153,14 @@
 		outline: $color-dark;
 		border: none;
 		border-bottom: 1px solid $color-light;
-		color: $color-light;
 		font-size: 3rem;
 		font-family: 'Varta', sans-serif;
 		text-align: center;
 		margin: 4rem 0;
-		width: 400px;
+		max-width: 320px;
 
 		&::placeholder {
 			color: $color-light;
 		}
-	}
-
-	&__btn {
-		background: none;
-		border: none;
-		outline: none;
-		width: 60px;
-		height: 60px;
-		cursor: pointer;
-
-		&:hover {
-			opacity: 0.6;
-		}
-	}
-
-	&__close-btn {
-		align-self: center;
-		justify-self: end;
 	}
 }

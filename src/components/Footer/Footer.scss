@@ -8,11 +8,10 @@
 
 	font-family: 'Varta', sans-serif;
 	font-size: 2rem;
-	color: $color-light;
 
 	display: grid;
 	grid-template-rows: min-content 3rem;
-	grid-template-columns: repeat(2, max-content);
+	grid-template-columns: repeat(2, 1fr);
 	grid-column-gap: 2rem;
 	grid-row-gap: 8rem;
 	align-content: center;
@@ -22,21 +21,37 @@
 		margin-top: 2rem;
 	}
 
+	@media only screen and (max-width: $small) {
+		grid-template-columns: 1fr;
+		grid-row-gap: 4rem;
+	}
+
 	&__form {
 		display: flex;
 		flex-direction: column;
 		// position: relative;
+		justify-content: center;
+		align-items: flex-end;
+
+		@media only screen and (max-width: $small) {
+			align-items: center;
+			justify-self: center;
+		}
 
 		&__wrapper {
+			// align-self: flex-end;
 			display: flex;
 			border: 1px solid $color-light;
+			width: 285px;
 		}
+
 		&__label {
+			// align-self: flex-end;
 			display: block;
-			color: $color-light;
 			font-size: 2rem;
 			margin-bottom: 2rem;
 		}
+
 		&__input {
 			padding: 1rem;
 			border: none;
@@ -44,10 +59,8 @@
 			background: none;
 			width: 285px;
 			height: 4rem;
-			color: $color-light;
 			font-family: 'Varta', sans-serif;
 			font-size: 2rem;
-			// margin-right: -40px;
 		}
 
 		&__btn {
@@ -59,7 +72,6 @@
 			cursor: pointer;
 
 			&__icon {
-				fill: $color-light;
 				width: 24px;
 				height: 24px;
 			}
@@ -69,26 +81,34 @@
 	&__social-media {
 		align-self: flex-end;
 
-		& > svg {
+		display: flex;
+
+		& > .svg-icon-container {
 			margin: 0 1rem;
 
 			&:first-child {
 				margin-left: 2rem;
 			}
 		}
+
+		@media only screen and (max-width: $small) {
+			justify-self: center;
+		}
 	}
 
 	&__copy {
-		// margin-top: 4rem;
 		grid-column: span 2;
 		justify-self: center;
 
 		font-size: 1.4rem;
+
+		@media only screen and (max-width: $small) {
+			grid-column: 1;
+		}
 	}
 	&__logo {
 		margin-left: 1rem;
 		width: 80px;
 		height: 28px;
-		fill: $color-light;
 	}
 }

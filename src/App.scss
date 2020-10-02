@@ -7,8 +7,6 @@
 $color-light: #fcfcfc;
 $color-dark: #211c1d;
 
-$shadow: drop-shadow(0 1px 1px rgba($color-dark, 0.5));
-
 $extra_large: 75em; // 1200
 $large: 62.5em; // 1000
 $medium: 48em; //768
@@ -30,23 +28,32 @@ $extra_small: 23.5em; // 375
 	@media only screen and (max-width: $medium) {
 		width: 600px;
 	}
+
+	@media only screen and (max-width: $small) {
+		width: 375px;
+	}
+
+	@media only screen and (max-width: $extra-small) {
+		width: 330px;
+	}
+}
+
+.light {
+	color: $color-light;
+}
+
+.dark {
+	color: $color-dark;
 }
 
 .shadow {
-	filter: $shadow;
+	filter: drop-shadow(0 1px 1px rgba($color-dark, 0.5));
 }
 
+// --------------------------------------------------------
 .heading {
 	font-family: 'DM Serif Display';
 	font-weight: 100;
-
-	&--light {
-		color: $color-light;
-	}
-
-	&--dark {
-		color: $color-dark;
-	}
 
 	&--large {
 		font-size: 8rem;
@@ -71,11 +78,6 @@ $extra_small: 23.5em; // 375
 	&--small {
 		font-size: 4rem;
 		line-height: 3rem;
-
-		@media only screen and (max-width: $extra_large) {
-			font-size: 3rem;
-			line-height: 2rem;
-		}
 	}
 }
 
@@ -83,15 +85,6 @@ $extra_small: 23.5em; // 375
 	font-family: 'Mrs Saint Delafield', cursive;
 	font-size: 5rem;
 	font-weight: 100;
-	// margin-top: 1rem;
-
-	&--light {
-		color: $color-light;
-	}
-
-	&--dark {
-		color: $color-dark;
-	}
 }
 
 .description {
@@ -99,59 +92,58 @@ $extra_small: 23.5em; // 375
 	margin: 4rem 0;
 	font-weight: 100;
 
-	&--light {
-		color: $color-light;
-		// filter: $shadow;
-	}
-	&--dark {
-		color: $color-dark;
-	}
-
 	@media only screen and (max-width: $extra_large) {
 		margin: 2rem 0;
 	}
 }
 
-.icon {
-	width: 24px;
-	height: 24px;
+// --------------------------------------------------------
+.svg {
+	width: 100%;
+	height: 100%;
 
 	&--light {
 		fill: $color-light;
 	}
-
 	&--dark {
 		fill: $color-dark;
 	}
 }
 
-.svg {
-	&__icon {
-		fill: $color-light;
+.svg-icon-container {
+	width: 24px;
+	height: 24px;
 
-		&--small {
-			width: 24px;
-			height: 24px;
-		}
-		&--large {
-			width: 60px;
-			height: 60px;
-		}
+	&--large {
+		width: 64px;
+		height: 64px;
 	}
 }
 
+.icon-btn {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+
+	z-index: 1000;
+
+	transition: all 0.2s ease;
+
+	&:hover {
+		opacity: 0.6;
+	}
+}
+
+.icon-hidden {
+	display: none;
+}
+
+// --------------------------------------------------------
 .link {
 	text-decoration: none;
 	font-weight: 300;
 	transition: all 0.2s;
-
-	&--light {
-		color: $color-light;
-	}
-
-	&--dark {
-		color: $color-dark;
-	}
 
 	&:hover {
 		opacity: 0.6;
@@ -161,52 +153,38 @@ $extra_small: 23.5em; // 375
 .btn {
 	font-family: 'Varta', sans-serif;
 	font-size: 2rem;
-	padding: 0.6rem 1rem;
+	line-height: 0;
+	padding: 1rem 1rem;
 	display: flex;
-	align-items: baseline;
-	justify-content: center;
-	position: relative;
-	height: 40px;
+	align-items: center;
+	justify-content: space-around;
 	cursor: pointer;
 
-	// transition: all 0.2s cubic-bezier(0.39, 1.98, 0.33, 0.95);
 	transition: all 0.2s ease;
 
-	&:hover {
-		// padding-right: 4rem;
-		color: $color-light;
-		background-color: rgba($color-dark, 0.8);
-	}
-	&:hover > .icon {
-		// transform: translateX(3rem) rotate(45deg);
-		fill: $color-light;
-	}
-
-	&__icon {
-		width: 20px;
-		height: 20px;
-		margin-left: 2rem;
-		align-self: center;
-
-		transition: all 0.1s;
-
-		&--light {
-			fill: $color-light;
-		}
-		&--dark {
-			fill: $color-dark;
-		}
+	.svg-icon-container {
+		margin-left: 1rem;
 	}
 
 	&--light {
-		color: $color-light;
 		border: 1px solid $color-light;
 		background-color: rgba($color-dark, 0.5);
+
+		&:hover {
+			background-color: rgba($color-dark, 0.8);
+		}
 	}
 
 	&--dark {
-		color: $color-dark;
 		border: 2px solid $color-dark;
 		background-color: rgba($color-dark, 0.05);
+
+		&:hover {
+			color: $color-light;
+			background-color: rgba($color-dark, 0.8);
+		}
+		&:hover .svg-icon-container > svg {
+			fill: $color-light;
+		}
 	}
 }

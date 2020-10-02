@@ -21,6 +21,12 @@ function MainNav() {
 		// console.log('[MainNav.js] Click Handler', toggleSearch);
 		toggleSearch = !toggleSearch;
 
+		const searchIcon = document.querySelector('#search-icon');
+		const closeIcon = document.querySelector('#close-icon');
+
+		searchIcon.classList.toggle('icon-hidden');
+		closeIcon.classList.toggle('icon-hidden');
+
 		if (toggleSearch) {
 			// Disables page from scrolling
 			const body = document.querySelector('body');
@@ -77,6 +83,10 @@ function MainNav() {
 		}
 	}
 
+	function openMobileNavBtnClickHandler(e) {
+		console.log('[MainNav.js] openMobileNavBtnClickHandler', e.target);
+	}
+
 	React.useEffect(() => {
 		navList = document.querySelector('.nav__list');
 		searchModal = document.querySelector('.search');
@@ -90,87 +100,90 @@ function MainNav() {
 			<div className='search'>
 				<div className='container'>
 					<div className='search__content'>
-						<button
-							className='search__close-btn nav__btn'
-							onClick={searchBtnClickHandler}>
-							<svg className='svg__icon svg__icon--small'>
-								<use xlinkHref={svgSprite + '#close'}></use>
-							</svg>
-						</button>
-
-						<h3 className='heading heading--light heading--medium'>
+						<h3 className='heading light heading--medium'>
 							Need help finding what you are looking for?
 						</h3>
-
 						<input className='search__input' type='text' placeholder='Search here' />
-						<button className='search__btn'>
-							<svg className='svg__icon svg__icon--large'>
-								<use xlinkHref={svgSprite + '#search'}></use>
-							</svg>
+						<button className='icon-btn'>
+							<div className='svg-icon-container--large'>
+								<svg className='svg svg--light'>
+									<use xlinkHref={svgSprite + '#search'}></use>
+								</svg>
+							</div>
 						</button>
 					</div>
 				</div>
 			</div>
 
 			<nav className='nav container'>
-				<a href='#home' className=''>
-					<svg className='nav__logo'>
+				<a href='#home' className='nav__home'>
+					<svg className='svg svg--light shadow'>
 						<use xlinkHref={svgSprite + '#logo'}></use>
 					</svg>
 				</a>
 
 				<ul className='nav__list'>
 					<li className='nav__item'>
-						<a href='#armchairs' className='link link--light'>
+						<a href='#armchairs' className='link light'>
 							Products
 						</a>
-						<svg className='icon icon--light dropdown__icon'>
-							<use xlinkHref={svgSprite + '#expand-more'}></use>
-						</svg>
+						<div className='svg-container dropdown__icon'>
+							<svg className='svg-icon-container svg svg--light shadow'>
+								<use xlinkHref={svgSprite + '#expand-more'}></use>
+							</svg>
+						</div>
 						<ul className={'dropdown__list'}>
 							<li className='dropdown__item'>
-								<a href='#armchairs' className='link link--light'>
+								<a href='#armchairs' className='link light shadow'>
 									Armchairs
 								</a>
 							</li>
 							<li className='dropdown__item'>
-								<a href='#two-seat-sofas' className='link link--light'>
+								<a href='#two-seat-sofas' className='link light shadow'>
 									Two Seats Sofas
 								</a>
 							</li>
 							<li className='dropdown__item'>
-								<a href='#three-seat-sofas' className='link link--light'>
+								<a href='#three-seat-sofas' className='link light shadow'>
 									Three Seats Sofas
 								</a>
 							</li>
 						</ul>
 					</li>
 					<li className='nav__item'>
-						<a href='#showroom' className='link link--light'>
+						<a href='#showroom' className='link light shadow'>
 							Show room
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href='#designers' className='link link--light'>
+						<a href='#designers' className='link light shadow'>
 							Designers
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href='#about' className='link link--light'>
+						<a href='#about' className='link light shadow'>
 							About
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href='#contact' className='link link--light'>
+						<a href='#contact' className='link light shadow'>
 							Contact
 						</a>
 					</li>
-					{/* <li className='nav__item'>
-					</li> */}
 				</ul>
-				<button className='nav__btn' onClick={searchBtnClickHandler}>
-					<svg className='svg__icon svg__icon--small'>
+				{/* Mobile Nav button */}
+				<button id='burger-btn' className='icon-btn' onClick={openMobileNavBtnClickHandler}>
+					<svg className='svg-icon-container svg svg--light'>
+						<use xlinkHref={svgSprite + '#nav'}></use>
+					</svg>
+				</button>
+				{/* Search button */}
+				<button className='icon-btn' onClick={searchBtnClickHandler}>
+					<svg id='search-icon' className='svg-icon-container svg svg--light shadow '>
 						<use xlinkHref={svgSprite + '#search'}></use>
+					</svg>
+					<svg id='close-icon' className='svg-icon-container svg svg--light icon-hidden'>
+						<use xlinkHref={svgSprite + '#close'}></use>
 					</svg>
 				</button>
 			</nav>

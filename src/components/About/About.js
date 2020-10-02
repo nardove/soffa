@@ -5,14 +5,14 @@ import './About.scss';
 function About() {
 	return (
 		<section id='about' className='about container'>
-			<h2 className='heading heading--dark heading--medium'>About Us</h2>
+			<h2 className='heading heading--medium dark'>About Us</h2>
 			<div className='about__wrapper'>
 				<div className='about__image'>
 					<svg className='about__image__svg'>
 						<use xlinkHref={svgSprite + '#living-room'}></use>
 					</svg>
 				</div>
-				<div className='about__description description'>
+				<div className='about__description description dark'>
 					<p>
 						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
 						Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse

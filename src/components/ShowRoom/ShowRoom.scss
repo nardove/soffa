@@ -4,10 +4,6 @@
 	text-align: center;
 	padding-top: 7rem;
 
-	// .heading {
-	// 	margin-bottom: 4rem;
-	// }
-
 	&__wrapper {
 		margin: 2rem 0;
 		width: 100%;
@@ -37,6 +33,11 @@
 				align-items: flex-start;
 				text-align: left;
 			}
+		}
+
+		@media only screen and (max-width: $small) {
+			background-color: orangered;
+			grid-template-rows: repeat(2, 50%);
 		}
 	}
 

@@ -12,13 +12,15 @@ function ShowRoom(props) {
 				<div
 					className='showroom__description'
 					style={{ backgroundColor: room['bg-color'] }}>
-					<h3 className='heading heading--small heading--light'>{room.name}</h3>
-					<p className='description description--light'>{room.description}</p>
-					<button className='btn btn--light'>
+					<h3 className='heading heading--small light'>{room.name}</h3>
+					<p className='description light'>{room.description}</p>
+					<button className='btn btn--light light'>
 						Read more
-						<svg className='icon btn__icon btn__icon--light'>
-							<use xlinkHref={svgSprite + '#call-made'}></use>
-						</svg>
+						<div className='svg-icon-container'>
+							<svg className='svg svg--light'>
+								<use xlinkHref={svgSprite + '#call-made'}></use>
+							</svg>
+						</div>
 					</button>
 				</div>
 			</div>
@@ -27,7 +29,7 @@ function ShowRoom(props) {
 
 	return (
 		<section id='showroom' className='showroom container'>
-			<h2 className='heading heading--dark heading--medium'>Show Room</h2>
+			<h2 className='heading heading--medium dark'>Show Room</h2>
 			{showrooms}
 		</section>
 	);
