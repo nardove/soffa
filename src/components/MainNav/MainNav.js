@@ -8,102 +8,91 @@ Todo:
 */
 
 import React from 'react';
-import gsap from 'gsap';
 import './MainNav.scss';
 import svgSprite from '../../assets/images/assets-sprite.svg';
 
 function MainNav() {
 	let navList = '';
+	let burgerBtn = '';
+	let searchBtn = '';
 	let searchModal = '';
 	let toggleSearch = false;
+	let toggleNav = false;
+
+	function updateSearchButtonIcon() {
+		searchBtn.querySelector('#search-icon').classList.toggle('icon-hidden');
+		searchBtn.querySelector('#close-icon').classList.toggle('icon-hidden');
+	}
+
+	function updateBurgerButtonIcon() {
+		burgerBtn.querySelector('#burger-icon').classList.toggle('icon-hidden');
+		burgerBtn.querySelector('#close-icon').classList.toggle('icon-hidden');
+	}
 
 	function searchBtnClickHandler(e) {
 		// console.log('[MainNav.js] Click Handler', toggleSearch);
+
+		e.preventDefault();
 		toggleSearch = !toggleSearch;
 
-		const searchIcon = document.querySelector('#search-icon');
-		const closeIcon = document.querySelector('#close-icon');
+		document.querySelector('body').style.overflow = toggleSearch ? 'hidden' : 'visible';
+		document.querySelector('.search__input').value = '';
 
-		searchIcon.classList.toggle('icon-hidden');
-		closeIcon.classList.toggle('icon-hidden');
-
-		if (toggleSearch) {
-			// Disables page from scrolling
-			const body = document.querySelector('body');
-			body.style.overflow = 'hidden';
-
-			const input = document.querySelector('.search__input');
-			input.value = '';
-
-			gsap.to(navList, {
-				opacity: 0,
-				x: -50,
-				duration: 0.25,
-				ease: 'power1.out',
-				onComplete: () => {
-					navList.style.pointerEvents = 'none';
-				},
-			});
-
-			gsap.fromTo(
-				searchModal,
-				{
-					left: 200,
-				},
-				{
-					left: 0,
-					duration: 0.25,
-					ease: 'power1.out',
-				}
-			);
-		} else {
-			// Enables page from scrolling
-			const body = document.querySelector('body');
-			body.style.overflow = 'visible';
-
-			gsap.to(navList, {
-				opacity: 1,
-				x: 0,
-				duration: 0.25,
-				ease: 'power1.in',
-				onComplete: () => {
-					navList.style.pointerEvents = 'all';
-				},
-			});
-
-			const width = searchModal.getBoundingClientRect().width;
-			gsap.to(searchModal, {
-				left: 100,
-				duration: 0.25,
-				ease: 'power2.in',
-				onComplete: () => {
-					searchModal.style.left = width + 'px';
-				},
-			});
-		}
+		updateSearchButtonIcon();
+		searchModal.classList.toggle('active');
+		burgerBtn.classList.toggle('hide-btn');
+		navList.classList.toggle('hide-nav');
 	}
 
 	function openMobileNavBtnClickHandler(e) {
-		console.log('[MainNav.js] openMobileNavBtnClickHandler', e.target);
+		// console.log('[MainNav.js] openMobileNavBtnClickHandler', toggleNav);
+
+		e.preventDefault();
+		toggleNav = !toggleNav;
+
+		document.querySelector('body').style.overflow = toggleNav ? 'hidden' : 'visible';
+
+		updateBurgerButtonIcon();
+		navList.classList.toggle('active');
+		searchBtn.classList.toggle('hide-btn');
+	}
+
+	function handleLinkClick(e) {
+		// console.log('[MainNav.js] handleLinkClick', e.target);
+
+		// e.preventDefault();
+		document.querySelector('body').style.overflow = 'visible';
+		if (navList.classList.contains('active')) {
+			updateBurgerButtonIcon();
+			navList.classList.toggle('active');
+			searchBtn.classList.toggle('hide-btn');
+		}
 	}
 
 	React.useEffect(() => {
+		burgerBtn = document.querySelector('#burger-btn');
+		searchBtn = document.querySelector('#search-btn');
 		navList = document.querySelector('.nav__list');
 		searchModal = document.querySelector('.search');
-
-		const width = searchModal.getBoundingClientRect().width;
-		searchModal.style.left = width + 'px';
 	}, []);
 
 	return (
 		<div className='main-nav'>
+			{/* 
+				Search modal panel
+			*/}
 			<div className='search'>
 				<div className='container'>
 					<div className='search__content'>
 						<h3 className='heading light heading--medium'>
 							Need help finding what you are looking for?
 						</h3>
-						<input className='search__input' type='text' placeholder='Search here' />
+						<input
+							className='search__input light'
+							type='text'
+							placeholder='Search here'
+							disabled
+						/>
 						<button className='icon-btn'>
 							<div className='svg-icon-container--large'>
 								<svg className='svg svg--light'>
@@ -122,6 +111,9 @@ function MainNav() {
 					</svg>
 				</a>
 
+				{/*
+					Main nav
+				*/}
 				<ul className='nav__list'>
 					<li className='nav__item'>
 						<a href='#armchairs' className='link light'>
@@ -132,53 +124,73 @@ function MainNav() {
 								<use xlinkHref={svgSprite + '#expand-more'}></use>
 							</svg>
 						</div>
+						{/* Dropdown */}
 						<ul className={'dropdown__list'}>
 							<li className='dropdown__item'>
-								<a href='#armchairs' className='link light shadow'>
+								<a
+									href='#armchairs'
+									className='link light shadow'
+									onClick={handleLinkClick}>
 									Armchairs
 								</a>
 							</li>
 							<li className='dropdown__item'>
-								<a href='#two-seat-sofas' className='link light shadow'>
+								<a
+									href='#two-seat-sofas'
+									className='link light shadow'
+									onClick={handleLinkClick}>
 									Two Seats Sofas
 								</a>
 							</li>
 							<li className='dropdown__item'>
-								<a href='#three-seat-sofas' className='link light shadow'>
+								<a
+									href='#three-seat-sofas'
+									className='link light shadow'
+									onClick={handleLinkClick}>
 									Three Seats Sofas
 								</a>
 							</li>
 						</ul>
 					</li>
 					<li className='nav__item'>
-						<a href='#showroom' className='link light shadow'>
+						<a href='#showroom' className='link light shadow' onClick={handleLinkClick}>
 							Show room
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href='#designers' className='link light shadow'>
+						<a
+							href='#designers'
+							className='link light shadow'
+							onClick={handleLinkClick}>
 							Designers
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href='#about' className='link light shadow'>
+						<a href='#about' className='link light shadow' onClick={handleLinkClick}>
 							About
 						</a>
 					</li>
 					<li className='nav__item'>
-						<a href='#contact' className='link light shadow'>
+						<a href='#contact' className='link light shadow' onClick={handleLinkClick}>
 							Contact
 						</a>
 					</li>
 				</ul>
-				{/* Mobile Nav button */}
+				{/*
+					Mobile Nav button
+				*/}
 				<button id='burger-btn' className='icon-btn' onClick={openMobileNavBtnClickHandler}>
-					<svg className='svg-icon-container svg svg--light'>
+					<svg id='burger-icon' className='svg-icon-container svg svg--light'>
 						<use xlinkHref={svgSprite + '#nav'}></use>
 					</svg>
+					<svg id='close-icon' className='svg-icon-container svg svg--light icon-hidden'>
+						<use xlinkHref={svgSprite + '#close'}></use>
+					</svg>
 				</button>
-				{/* Search button */}
-				<button className='icon-btn' onClick={searchBtnClickHandler}>
+				{/*
+					Search button
+				*/}
+				<button id='search-btn' className='icon-btn' onClick={searchBtnClickHandler}>
 					<svg id='search-icon' className='svg-icon-container svg svg--light shadow '>
 						<use xlinkHref={svgSprite + '#search'}></use>
 					</svg>

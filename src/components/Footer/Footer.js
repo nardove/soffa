@@ -4,6 +4,7 @@ import './Footer.scss';
 
 function Footer() {
 	function validateAndSubmitForm(e) {
+		e.preventDefault();
 		console.log(e.target, 'validateAndSubmitForm method called');
 	}
 

@@ -21,7 +21,7 @@
 			text-align: right;
 		}
 
-		@media only screen and (max-width: $large) {
+		@include respond(screen_large) {
 			grid-template-columns: 1fr;
 			grid-template-rows: repeat(2, 1fr);
 			height: 100%;
@@ -35,9 +35,8 @@
 			}
 		}
 
-		@media only screen and (max-width: $small) {
-			background-color: orangered;
-			grid-template-rows: repeat(2, 50%);
+		@include respond(screen_small) {
+			grid-template-rows: 300px min-content;
 		}
 	}
 
@@ -50,10 +49,12 @@
 		text-align: left;
 		white-space: pre-line;
 
-		@media only screen and (max-width: $extra_large) {
+		// @media only screen and (max-width: $extra_large) {
+		@include respond(screen_extra_large) {
 			padding: 4rem;
 		}
-		@media only screen and (max-width: $large) {
+		@include respond(screen_large) {
+			// @media only screen and (max-width: $large) {
 			padding: 2rem;
 		}
 	}

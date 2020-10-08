@@ -7,33 +7,61 @@
 $color-light: #fcfcfc;
 $color-dark: #211c1d;
 
+// -------------------------------------------------
+// Media queriy mixings
 $extra_large: 75em; // 1200
 $large: 62.5em; // 1000
 $medium: 48em; //768
 $small: 37.5em; // 600
 $extra_small: 23.5em; // 375
 
+@mixin respond($breakpoint) {
+	@if $breakpoint == screen_extra_large {
+		@media only screen and (max-width: $extra_large) {
+			@content;
+		}
+	}
+	@if $breakpoint == screen_large {
+		@media only screen and (max-width: $large) {
+			@content;
+		}
+	}
+	@if $breakpoint == screen_medium {
+		@media only screen and (max-width: $medium) {
+			@content;
+		}
+	}
+	@if $breakpoint == screen_small {
+		@media only screen and (max-width: $small) {
+			@content;
+		}
+	}
+	@if $breakpoint == screen_extra_small {
+		@media only screen and (max-width: $extra_small) {
+			@content;
+		}
+	}
+}
+
+// -------------------------------------------------
+
 .container {
 	width: 1200px;
 	margin: 0 auto;
 
-	@media only screen and (max-width: $extra_large) {
+	@include respond(screen_extra_large) {
 		width: 1000px;
 	}
-
-	@media only screen and (max-width: $large) {
+	@include respond(screen_large) {
 		width: 768px;
 	}
-
-	@media only screen and (max-width: $medium) {
+	@include respond(screen_medium) {
 		width: 600px;
 	}
-
-	@media only screen and (max-width: $small) {
+	@include respond(screen_small) {
 		width: 375px;
 	}
-
-	@media only screen and (max-width: $extra-small) {
+	@include respond(screen_extra_small) {
 		width: 330px;
 	}
 }
@@ -58,20 +86,19 @@ $extra_small: 23.5em; // 375
 	&--large {
 		font-size: 8rem;
 		line-height: 6rem;
+		line-height: 6rem;
 
-		@media only screen and (max-width: $extra_large) {
+		@include respond(screen_extra_large) {
 			font-size: 6rem;
-			line-height: 5rem;
 		}
 	}
 
 	&--medium {
 		font-size: 6rem;
-		line-height: 6rem;
 
-		@media only screen and (max-width: $extra_large) {
+		@include respond(screen_extra_large) {
 			font-size: 5rem;
-			line-height: 4rem;
+			line-height: 6rem;
 		}
 	}
 
@@ -92,7 +119,7 @@ $extra_small: 23.5em; // 375
 	margin: 4rem 0;
 	font-weight: 100;
 
-	@media only screen and (max-width: $extra_large) {
+	@include respond(screen_extra_large) {
 		margin: 2rem 0;
 	}
 }
@@ -162,6 +189,11 @@ $extra_small: 23.5em; // 375
 
 	transition: all 0.2s ease;
 
+	&:hover {
+		color: $color-light;
+		background-color: rgba($color-dark, 0.8);
+	}
+
 	.svg-icon-container {
 		margin-left: 1rem;
 	}
@@ -169,20 +201,12 @@ $extra_small: 23.5em; // 375
 	&--light {
 		border: 1px solid $color-light;
 		background-color: rgba($color-dark, 0.5);
-
-		&:hover {
-			background-color: rgba($color-dark, 0.8);
-		}
 	}
 
 	&--dark {
 		border: 2px solid $color-dark;
 		background-color: rgba($color-dark, 0.05);
 
-		&:hover {
-			color: $color-light;
-			background-color: rgba($color-dark, 0.8);
-		}
 		&:hover .svg-icon-container > svg {
 			fill: $color-light;
 		}

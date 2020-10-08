@@ -12,7 +12,7 @@
 	grid-gap: 2rem;
 	overflow: hidden;
 
-	@media only screen and (max-width: $medium) {
+	@include respond(screen_medium) {
 		grid-template-rows: repeat(4, 1fr);
 		grid-template-columns: 1fr;
 	}
@@ -79,7 +79,7 @@
 		height: 50px;
 		margin-bottom: 2rem;
 
-		@media only screen and (max-width: $small) {
+		@include respond(screen_small) {
 			flex-direction: column;
 		}
 	}

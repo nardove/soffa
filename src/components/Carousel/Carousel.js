@@ -192,7 +192,7 @@ function Carousel(props) {
 						<h3 className='heading heading--large light shadow'>{data.title}</h3>
 						<p className='description light shadow'>{data.description}</p>
 						<button
-							className='btn btn--light light'
+							className='slide__btn btn btn--light light'
 							onMouseOver={mouseOver}
 							onMouseOut={mouseOut}>
 							Read more

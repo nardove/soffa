@@ -14,13 +14,18 @@
 		grid-gap: 2rem;
 		justify-content: center;
 
-		@media only screen and (max-width: $extra_large) {
+		@include respond(screen_extra_large) {
 			grid-template-columns: 60% 40%;
 		}
-		@media only screen and (max-width: $large) {
+
+		@include respond(screen_large) {
 			grid-gap: 8rem;
 			grid-template-rows: repeat(2, min-content);
 			grid-template-columns: 1fr;
+		}
+
+		@include respond(screen_medium) {
+			grid-gap: 6rem;
 		}
 	}
 
@@ -32,6 +37,10 @@
 		h3 {
 			grid-column: span 2;
 		}
+
+		// @include respond(screen_medium) {
+		// 	grid-gap: 1rem;
+		// }
 	}
 }
 
@@ -70,7 +79,7 @@
 	grid-template-rows: repeat(4, 40px);
 	grid-gap: 2rem;
 
-	@media only screen and (max-width: $medium) {
+	@include respond(screen_medium) {
 		grid-template-columns: 1fr;
 		grid-template-rows: repeat(3, 40px) 200px 40px;
 	}
@@ -80,9 +89,11 @@
 		font-size: 2rem;
 		width: 285px;
 		border: 2px solid $color-dark;
+		border-radius: 0;
 		background-color: rgba($color-dark, 0.05);
 		padding: 0.6rem 1rem;
 		outline-color: $color-dark;
+
 		&::placeholder {
 			color: $color-dark;
 		}
@@ -90,7 +101,7 @@
 			background-color: rgba($color-dark, 0.01);
 		}
 
-		@media only screen and (max-width: $extra_large) {
+		@include respond(screen_extra_large) {
 			width: 100%;
 		}
 	}
@@ -114,7 +125,7 @@
 			border-radius: 0;
 		}
 
-		@media only screen and (max-width: $extra_large) {
+		@include respond(screen_extra_large) {
 			width: 100%;
 		}
 	}
@@ -126,11 +137,16 @@
 		grid-row: 1 / span 3;
 		resize: none;
 		border: 2px solid $color-dark;
+		border-radius: 0;
 		background-color: rgba($color-dark, 0.05);
 		padding: 1rem;
 		outline-color: $color-dark;
 
-		@media only screen and (max-width: $medium) {
+		&::placeholder {
+			color: $color-dark;
+		}
+
+		@include respond(screen_medium) {
 			grid-column: 1;
 			grid-row: 4;
 		}

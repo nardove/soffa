@@ -3,6 +3,11 @@ import './Contact.scss';
 import svgSprite from '../../assets/images/assets-sprite.svg';
 
 function Contact() {
+	function validateForm(e) {
+		e.preventDefault();
+		console.log('[Contact.js] validateForm()', e.target);
+	}
+
 	return (
 		<section id='contact' className='contact container'>
 			<div className='contact__wrapper'>
@@ -27,9 +32,9 @@ function Contact() {
 							className='form__textarea'
 							rows='8'
 							cols='50'
-							defaultValue='Message'></textarea>
+							placeholder='Message'></textarea>
 						<div className='form__action'>
-							<button className='form__submit btn btn--dark'>
+							<button className='form__submit btn btn--dark' onClick={validateForm}>
 								Submit
 								<div className='svg-icon-container'>
 									<svg className='svg svg--dark'>
@@ -37,7 +42,7 @@ function Contact() {
 									</svg>
 								</div>
 							</button>
-							<button className='form__cancel btn btn--dark'>
+							<button className='form__cancel btn btn--dark' onClick={validateForm}>
 								Cancel
 								<div className='svg-icon-container'>
 									<svg className='svg svg--dark'>

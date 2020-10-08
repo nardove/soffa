@@ -10,10 +10,14 @@
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 6rem;
 
-		@media only screen and (max-width: $large) {
+		@include respond(screen_large) {
 			grid-template-rows: 300px 1fr;
 			grid-template-columns: 1fr;
 			grid-gap: 3rem;
+		}
+		@include respond(screen_medium) {
+			margin-top: 1rem;
+			grid-gap: 0;
 		}
 	}
 
