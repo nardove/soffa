@@ -36,19 +36,9 @@ function Contact() {
 						<div className='form__action'>
 							<button className='form__submit btn btn--dark' onClick={validateForm}>
 								Submit
-								<div className='svg-icon-container'>
-									<svg className='svg svg--dark'>
-										<use xlinkHref={svgSprite + '#arrow-forward'}></use>
-									</svg>
-								</div>
 							</button>
 							<button className='form__cancel btn btn--dark' onClick={validateForm}>
 								Cancel
-								<div className='svg-icon-container'>
-									<svg className='svg svg--dark'>
-										<use xlinkHref={svgSprite + '#close'}></use>
-									</svg>
-								</div>
 							</button>
 						</div>
 					</form>

@@ -14,14 +14,7 @@ function ShowRoom(props) {
 					style={{ backgroundColor: room['bg-color'] }}>
 					<h3 className='heading heading--small light'>{room.name}</h3>
 					<p className='description light'>{room.description}</p>
-					<button className='btn btn--light light'>
-						Read more
-						<div className='svg-icon-container'>
-							<svg className='svg svg--light'>
-								<use xlinkHref={svgSprite + '#call-made'}></use>
-							</svg>
-						</div>
-					</button>
+					<button className='btn btn--light light'>Read more</button>
 				</div>
 			</div>
 		);

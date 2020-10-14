@@ -180,14 +180,19 @@ $extra_small: 23.5em; // 375
 .btn {
 	font-family: 'Varta', sans-serif;
 	font-size: 2rem;
-	line-height: 0;
-	padding: 1rem 1rem;
-	display: flex;
+	line-height: 46px;
+	height: 46px;
+	padding: 0 2rem;
+	display: inline-block;
 	align-items: center;
 	justify-content: space-around;
 	cursor: pointer;
 
 	transition: all 0.2s ease;
+
+	@include respond(screen_extra_large) {
+		justify-content: center;
+	}
 
 	&:hover {
 		color: $color-light;
@@ -201,6 +206,10 @@ $extra_small: 23.5em; // 375
 	&--light {
 		border: 1px solid $color-light;
 		background-color: rgba($color-dark, 0.5);
+
+		&:focus {
+			outline: 1px solid $color-light;
+		}
 	}
 
 	&--dark {
@@ -209,6 +218,10 @@ $extra_small: 23.5em; // 375
 
 		&:hover .svg-icon-container > svg {
 			fill: $color-light;
+		}
+
+		&:focus {
+			outline: 1px solid $color-dark;
 		}
 	}
 }

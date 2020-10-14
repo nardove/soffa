@@ -37,10 +37,6 @@
 		h3 {
 			grid-column: span 2;
 		}
-
-		// @include respond(screen_medium) {
-		// 	grid-gap: 1rem;
-		// }
 	}
 }
 
@@ -76,22 +72,25 @@
 .form {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(4, 40px);
+	grid-template-rows: repeat(4, 46px);
 	grid-gap: 2rem;
 
 	@include respond(screen_medium) {
 		grid-template-columns: 1fr;
-		grid-template-rows: repeat(3, 40px) 200px 40px;
+		grid-template-rows: repeat(3, 46px) 200px 46px;
 	}
 
 	&__input {
 		font-family: 'Varta', sans-serif;
 		font-size: 2rem;
 		width: 285px;
+		height: 46px;
+		display: inline-block;
+		line-height: 46px;
 		border: 2px solid $color-dark;
+		padding: 0 1rem;
 		border-radius: 0;
 		background-color: rgba($color-dark, 0.05);
-		padding: 0.6rem 1rem;
 		outline-color: $color-dark;
 
 		&::placeholder {
@@ -99,6 +98,7 @@
 		}
 		&:focus {
 			background-color: rgba($color-dark, 0.01);
+			border-radius: 0;
 		}
 
 		@include respond(screen_extra_large) {
@@ -110,14 +110,14 @@
 		font-family: 'Varta', sans-serif;
 		font-size: 2rem;
 		width: 285px;
-		padding: 0.5rem 0.5rem;
+		padding: 0.5rem 1rem;
 		background-color: rgba($color-dark, 0.05);
 		border: 2px solid $color-dark;
 		border-radius: 0;
 
 		appearance: none;
 		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M16.59 8.29498L12 12.875L7.41 8.29498L6 9.70498L12 15.705L18 9.70498L16.59 8.29498Z" fill="%23211c1d" /></svg>');
-		background-position: calc(100% - 30px) 6px;
+		background-position: calc(100% - 30px) 9px;
 		cursor: pointer;
 
 		&:focus {

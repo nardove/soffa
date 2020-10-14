@@ -196,11 +196,6 @@ function Carousel(props) {
 							onMouseOver={mouseOver}
 							onMouseOut={mouseOut}>
 							Read more
-							<div className='svg-icon-container'>
-								<svg className='svg svg--light'>
-									<use xlinkHref={svgSprite + '#call-made'}></use>
-								</svg>
-							</div>
 						</button>
 					</div>
 				</div>
