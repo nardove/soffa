@@ -1,8 +1,8 @@
 import React from 'react';
-import svgSprite from '../../assets/images/assets-sprite.svg';
+// import svgSprite from '../../assets/images/assets-sprite.svg';
 import './ShowRoom.scss';
 
-function ShowRoom(props) {
+const ShowRoom = (props) => {
 	// console.log('[ShowRoom.js]', props.data);
 
 	const showrooms = props.data.map((room) => {
@@ -26,6 +26,6 @@ function ShowRoom(props) {
 			{showrooms}
 		</section>
 	);
-}
+};
 
 export default ShowRoom;

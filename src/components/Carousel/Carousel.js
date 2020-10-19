@@ -2,9 +2,10 @@
 import React from 'react';
 import gsap from 'gsap';
 import './Carousel.scss';
-import svgSprite from '../../assets/images/assets-sprite.svg';
+// import svgSprite from '../../assets/images/assets-sprite.svg';
+import Slide from './Slide';
 
-function Carousel(props) {
+const Carousel = (props) => {
 	// console.log('[Carousel.js]', props.data);
 
 	let autoPlay = 0,
@@ -17,10 +18,9 @@ function Carousel(props) {
 		slides,
 		indicatorsNav,
 		indicators,
-		hidden,
-		visibilityChange;
+		hidden;
 
-	function initCarousel() {
+	const initCarousel = () => {
 		track = document.querySelector('.carousel__track');
 		slides = Array.from(track.children);
 		indicatorsNav = document.querySelector('.carousel__indicators');
@@ -31,6 +31,42 @@ function Carousel(props) {
 			slide.style.zIndex = slides.length - index;
 		});
 
+		iniIndicatorsNav();
+
+		initDocumentVisibilityListener();
+
+		startAutoPlay();
+
+		// Stops carousel slide show if it is out of focus
+		window.onscroll = () => {
+			window.pageYOffset > 400 ? stopAutoPlay() : startAutoPlay();
+		};
+	};
+
+	const initDocumentVisibilityListener = () => {
+		let visibilityChange = '';
+		// Checks is the browser tab showing the site is active or hidden
+		if (typeof document.hidden !== 'undefined') {
+			// Opera 12.10 and Firefox 18 and later support
+			hidden = 'hidden';
+			visibilityChange = 'visibilitychange';
+		} else if (typeof document.msHidden !== 'undefined') {
+			hidden = 'msHidden';
+			visibilityChange = 'msvisibilitychange';
+		} else if (typeof document.webkitHidden !== 'undefined') {
+			hidden = 'webkitHidden';
+			visibilityChange = 'webkitvisibilitychange';
+		}
+		document.addEventListener(
+			visibilityChange,
+			() => {
+				document[hidden] ? stopAutoPlay() : startAutoPlay();
+			},
+			false
+		);
+	};
+
+	const iniIndicatorsNav = () => {
 		indicatorsNav.addEventListener('click', (e) => {
 			const targetDot = e.target.closest('button');
 
@@ -51,51 +87,31 @@ function Carousel(props) {
 
 		indicatorsNav.addEventListener('mouseenter', mouseOver);
 		indicatorsNav.addEventListener('mouseleave', mouseOut);
+	};
 
-		if (typeof document.hidden !== 'undefined') {
-			// Opera 12.10 and Firefox 18 and later support
-			hidden = 'hidden';
-			visibilityChange = 'visibilitychange';
-		} else if (typeof document.msHidden !== 'undefined') {
-			hidden = 'msHidden';
-			visibilityChange = 'msvisibilitychange';
-		} else if (typeof document.webkitHidden !== 'undefined') {
-			hidden = 'webkitHidden';
-			visibilityChange = 'webkitvisibilitychange';
-		}
-		document.addEventListener(visibilityChange, handleVisibilityChange, false);
-
-		startAutoPlay();
-
-		// Stops carousel slide show if it is out of focus
-		window.onscroll = () => {
-			window.pageYOffset > 400 ? stopAutoPlay() : startAutoPlay();
-		};
-	}
-
-	function mouseOver(e) {
+	const mouseOver = (e) => {
+		// console.log('[Carousel.js] mouseOver');
 		!isTrasitioning && stopAutoPlay();
-	}
-	function mouseOut(e) {
+	};
+
+	const mouseOut = (e) => {
+		// console.log('[Carousel.js] mouseOut');
 		if (!isTrasitioning) {
 			startAutoPlay();
 			isForward = true;
 		}
-	}
+	};
 
-	function killCarousel() {
+	const killCarousel = () => {
 		stopAutoPlay();
 
 		indicatorsNav.removeEventListener('mouseenter');
 		indicatorsNav.removeEventListener('mouseleave');
-		document.removeEventListener(visibilityChange, handleVisibilityChange);
-	}
 
-	function handleVisibilityChange() {
-		document[hidden] ? stopAutoPlay() : startAutoPlay();
-	}
+		// document.removeEventListener(visibilityChange, handleVisibilityChange);
+	};
 
-	function moveTrack() {
+	const moveTrack = () => {
 		const slideWidth = slides[currentSlide].getBoundingClientRect().width;
 		const duration = 1.5;
 
@@ -150,58 +166,34 @@ function Carousel(props) {
 		);
 
 		updateDots();
-	}
+	};
 
-	function updateDots() {
+	const updateDots = () => {
 		indicators[currentSlide].classList.remove('current-slide');
 		indicators[nextSlide].classList.add('current-slide');
 
 		currentSlide = nextSlide;
 		nextSlide++;
 		if (nextSlide === slides.length) nextSlide = 0;
-	}
+	};
 
-	function startAutoPlay() {
+	const startAutoPlay = () => {
 		clearInterval(autoPlay);
 		autoPlay = setInterval(() => {
 			moveTrack();
 		}, slideStandbyDuration);
 		// console.log('[Carousel.js] startAutoPlay()', autoPlay);
-	}
+	};
 
-	function stopAutoPlay() {
+	const stopAutoPlay = () => {
 		clearInterval(autoPlay);
 		autoPlay = 0;
 		// console.log('[Carousel.js] stopAutoPlay()', autoPlay);
-	}
+	};
 
-	React.useEffect(() => {
-		initCarousel();
-
-		return () => {
-			killCarousel();
-		};
-	}, []);
-
-	const listItems = props.data.map((data) => {
-		return (
-			<li className='carousel__slide' key={data.id}>
-				<img className='slide__img' src={'./' + data['image-url']} alt='Livingroom' />
-				<div className='container'>
-					<div className='slide__content'>
-						<h3 className='heading heading--large light shadow'>{data.title}</h3>
-						<p className='description light shadow'>{data.description}</p>
-						<button
-							className='slide__btn btn btn--light light'
-							onMouseOver={mouseOver}
-							onMouseOut={mouseOut}>
-							Read more
-						</button>
-					</div>
-				</div>
-			</li>
-		);
-	});
+	const listItems = props.data.map((data) => (
+		<Slide key={data.id} data={data} onMouseOver={mouseOver} onMouseOut={mouseOut} />
+	));
 
 	const indicatorItems = props.data.map((data, i) => {
 		return i === 0 ? (
@@ -210,6 +202,14 @@ function Carousel(props) {
 			<button className='carousel__indicator' key={'btn' + i}></button>
 		);
 	});
+
+	React.useEffect(() => {
+		initCarousel();
+
+		return () => {
+			killCarousel();
+		};
+	}, []);
 
 	return (
 		<div id='home' className='carousel'>
@@ -221,6 +221,6 @@ function Carousel(props) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Carousel;

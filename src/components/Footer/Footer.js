@@ -2,11 +2,11 @@ import React from 'react';
 import svgSprite from '../../assets/images/assets-sprite.svg';
 import './Footer.scss';
 
-function Footer() {
-	function validateAndSubmitForm(e) {
+const Footer = () => {
+	const validateAndSubmitForm = (e) => {
 		e.preventDefault();
 		console.log(e.target, 'validateAndSubmitForm method called');
-	}
+	};
 
 	return (
 		<section id='footer' className='footer'>
@@ -58,6 +58,6 @@ function Footer() {
 			</div>
 		</section>
 	);
-}
+};
 
 export default Footer;

@@ -4,19 +4,19 @@
 			"id": "HP001",
 			"title": "Vestibulum auctor dapibus",
 			"description": "Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.",
-			"image-url": "images/hero-1.jpg"
+			"image_url": "images/hero-1.jpg"
 		},
 		{
 			"id": "HP002",
 			"title": "Praesent dapibus",
 			"description": "Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.",
-			"image-url": "images/hero-2.jpg"
+			"image_url": "images/hero-2.jpg"
 		},
 		{
 			"id": "HP003",
 			"title": "Cras ornare tristique elit",
 			"description": "Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-			"image-url": "images/hero-3.jpg"
+			"image_url": "images/hero-3.jpg"
 		}
 	],
 	"products": [
@@ -33,7 +33,7 @@
 					"colors": ["#D1C7B2", "#9C7465", "#683A1A"],
 					"price": "£109.00",
 					"photo": "images/armchair-1.jpg",
-					"in-stock": 4,
+					"in_stock": 4,
 					"active": true
 				},
 				{
@@ -45,7 +45,7 @@
 					"colors": ["#04151F", "#774B2A"],
 					"price": "£129.00",
 					"photo": "images/armchair-2.jpg",
-					"in-stock": 2,
+					"in_stock": 2,
 					"active": true
 				},
 				{
@@ -57,7 +57,7 @@
 					"colors": ["#734C32", "#32021F", "#683A1A"],
 					"price": "£165.00",
 					"photo": "images/armchair-3.jpg",
-					"in-stock": 3,
+					"in_stock": 3,
 					"active": true
 				},
 				{
@@ -69,7 +69,7 @@
 					"colors": ["#867E7C", "#36213E", "#6E9075", "#FEEA00"],
 					"price": "£98.00",
 					"photo": "images/armchair-4.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				}
 			]
@@ -87,7 +87,7 @@
 					"colors": ["#3A5452", "#CACFD6", "#DD6031", "#994636"],
 					"price": "£275.00",
 					"photo": "images/two-seat-1.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				},
 				{
@@ -99,7 +99,7 @@
 					"colors": ["#9DB0CF", "#949D6A", "#242325"],
 					"price": "£399.00",
 					"photo": "images/two-seat-2.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				},
 				{
@@ -111,7 +111,7 @@
 					"colors": ["#ADA9AA", "#E2F89C", "#2A1E5C", "#3CBBB1"],
 					"price": "£255.00",
 					"photo": "images/two-seat-3.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				},
 				{
@@ -123,7 +123,7 @@
 					"colors": ["#5F5F5F", "#F95738", "#D9CFC1", "#EEE3AB"],
 					"price": "£329.99",
 					"photo": "images/two-seat-4.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				}
 			]
@@ -141,7 +141,7 @@
 					"colors": ["#E0D9C7", "#6D454C", "#403D39", "#252422", "#EB5E28"],
 					"price": "£895.00",
 					"photo": "images/three-seat-1.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				},
 				{
@@ -153,7 +153,7 @@
 					"colors": ["#BBA288", "#9C7465", "#683A1A"],
 					"price": "£1099.99",
 					"photo": "images/three-seat-2.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				},
 				{
@@ -165,7 +165,7 @@
 					"colors": ["#7D848F", "#1A1F16", "#1E3F20", "#345830"],
 					"price": "£980.00",
 					"photo": "images/three-seat-3.jpg",
-					"in-stock": 5,
+					"in_stock": 5,
 					"active": true
 				},
 				{
@@ -177,7 +177,7 @@
 					"colors": ["#E8E7E5", "#020100"],
 					"price": "£475.00",
 					"photo": "images/three-seat-4.jpg",
-					"in-stock": 0,
+					"in_stock": 0,
 					"active": true
 				}
 			]

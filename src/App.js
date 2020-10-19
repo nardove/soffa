@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import data from '../src/assets/api/furniture-data.json';
 import MainNav from './components/MainNav/MainNav';
 import Carousel from './components/Carousel/Carousel';
-import Products from './components/Products/Products';
+import ProductsList from './components/Products/ProductsList';
 import ShowRoom from './components/ShowRoom/ShowRoom';
 import Designers from './components/Designers/Designers';
 import About from './components/About/About';
@@ -11,12 +11,12 @@ import Footer from './components/Footer/Footer';
 
 import './App.scss';
 
-function App() {
+const App = () => {
 	return (
 		<Fragment>
 			<Carousel data={data['hero-panel']} />
 			<MainNav />
-			<Products data={data['products']} />
+			<ProductsList data={data['products']} />
 			<ShowRoom data={data['show-rooms']} />
 			<Designers />
 			<About />
@@ -24,6 +24,6 @@ function App() {
 			<Footer />
 		</Fragment>
 	);
-}
+};
 
 export default App;

@@ -1,87 +1,124 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-/*
-Todo:
-- Fix search modal when browser is resized
-- same for the Carousel
-*/
-
 import React from 'react';
 import './MainNav.scss';
 import svgSprite from '../../assets/images/assets-sprite.svg';
 
-function MainNav() {
-	let navList = '';
-	let burgerBtn = '';
-	let searchBtn = '';
-	let searchModal = '';
-	let toggleSearch = false;
-	let toggleNav = false;
+const MainNav = () => {
+	const navListRef = React.useRef();
+	const burgerBtnRef = React.useRef();
+	const searchBtnRef = React.useRef();
+	const searchModalRef = React.useRef();
+	const [toggleSearch, setToggleSearch] = React.useState(false);
+	const [toggleNav, setToggleNav] = React.useState(false);
 
-	function updateSearchButtonIcon() {
-		searchBtn.querySelector('#search-icon').classList.toggle('icon-hidden');
-		searchBtn.querySelector('#close-icon').classList.toggle('icon-hidden');
-	}
+	const navItemsConfig = [
+		{
+			anchor: 'showroom',
+			title: 'Show Room',
+		},
+		{
+			anchor: 'designers',
+			title: 'Designers',
+		},
+		{
+			anchor: 'about',
+			title: 'About',
+		},
+		{
+			anchor: 'contact',
+			title: 'Contact',
+		},
+	];
 
-	function updateBurgerButtonIcon() {
-		burgerBtn.querySelector('#burger-icon').classList.toggle('icon-hidden');
-		burgerBtn.querySelector('#close-icon').classList.toggle('icon-hidden');
-	}
+	const dropdownConfig = [
+		{
+			anchor: 'armchairs',
+			title: 'Armchairs',
+		},
+		{
+			anchor: 'two-seat-sofas',
+			title: 'Two Seat Sofas',
+		},
+		{
+			anchor: 'three-seat-sofas',
+			title: 'Three Seat Sofas',
+		},
+	];
 
-	function searchBtnClickHandler(e) {
+	const updateMainNavButtonIcon = (btnRef) => {
+		// console.log('[MainNav.js] updateBurgerButtonIcons', btnRef);
+		btnRef.current
+			.querySelector(`#${btnRef === searchBtnRef ? 'search-icon' : 'burger-icon'}`)
+			.classList.toggle('icon-hidden');
+		btnRef.current.querySelector('#close-icon').classList.toggle('icon-hidden');
+	};
+
+	const searchBtnClickHandler = (e) => {
 		// console.log('[MainNav.js] Click Handler', toggleSearch);
 
 		e.preventDefault();
-		toggleSearch = !toggleSearch;
+		setToggleSearch(!toggleSearch);
 
-		document.querySelector('body').style.overflow = toggleSearch ? 'hidden' : 'visible';
 		document.querySelector('.search__input').value = '';
 
-		updateSearchButtonIcon();
-		searchModal.classList.toggle('active');
-		burgerBtn.classList.toggle('hide-btn');
-		navList.classList.toggle('hide-nav');
-	}
+		updateMainNavButtonIcon(searchBtnRef);
+		searchModalRef.current.classList.toggle('active');
+		burgerBtnRef.current.classList.toggle('hide-btn');
+		navListRef.current.classList.toggle('hide-nav');
+	};
 
-	function openMobileNavBtnClickHandler(e) {
+	const openMobileNavBtnClickHandler = (e) => {
 		// console.log('[MainNav.js] openMobileNavBtnClickHandler', toggleNav);
 
 		e.preventDefault();
-		toggleNav = !toggleNav;
+		setToggleNav(!toggleNav);
+		updateMainNavButtonIcon(burgerBtnRef);
+		navListRef.current.classList.toggle('active');
+		searchBtnRef.current.classList.toggle('hide-btn');
+	};
 
-		document.querySelector('body').style.overflow = toggleNav ? 'hidden' : 'visible';
-
-		updateBurgerButtonIcon();
-		navList.classList.toggle('active');
-		searchBtn.classList.toggle('hide-btn');
-	}
-
-	function handleLinkClick(e) {
+	const handleLinkClick = (e) => {
 		// console.log('[MainNav.js] handleLinkClick', e.target);
 
 		// e.preventDefault();
-		document.querySelector('body').style.overflow = 'visible';
-		if (navList.classList.contains('active')) {
-			updateBurgerButtonIcon();
-			navList.classList.toggle('active');
-			searchBtn.classList.toggle('hide-btn');
+		if (navListRef.current.classList.contains('active')) {
+			setToggleNav(!toggleNav);
+			updateMainNavButtonIcon(burgerBtnRef);
+			navListRef.current.classList.toggle('active');
+			searchBtnRef.current.classList.toggle('hide-btn');
 		}
-	}
+	};
+
+	const NavItems = (props) => {
+		const { cssClass, config } = props;
+
+		return config.map((item) => {
+			const { anchor, title } = item;
+
+			return (
+				<li className={cssClass} key={anchor}>
+					<a href={`#${anchor}`} className='link light shadow' onClick={handleLinkClick}>
+						{title}
+					</a>
+				</li>
+			);
+		});
+	};
 
 	React.useEffect(() => {
-		burgerBtn = document.querySelector('#burger-btn');
-		searchBtn = document.querySelector('#search-btn');
-		navList = document.querySelector('.nav__list');
-		searchModal = document.querySelector('.search');
-	}, []);
+		document.querySelector('body').style.overflow = toggleSearch ? 'hidden' : 'visible';
+	}, [toggleSearch]);
+
+	React.useEffect(() => {
+		document.querySelector('body').style.overflow = toggleNav ? 'hidden' : 'visible';
+	}, [toggleNav]);
 
 	return (
 		<div className='main-nav'>
-			{/* 
-				Search modal panel
-			*/}
-			<div className='search'>
+			{/* Search modal panel */}
+			<div className='search' ref={searchModalRef}>
 				<div className='container'>
 					<div className='search__content'>
 						<h3 className='heading light heading--medium'>
@@ -111,10 +148,8 @@ function MainNav() {
 					</svg>
 				</a>
 
-				{/*
-					Main nav
-				*/}
-				<ul className='nav__list'>
+				{/*	Main nav */}
+				<ul className='nav__list' ref={navListRef}>
 					<li className='nav__item'>
 						<a href='#armchairs' className='link light'>
 							Products
@@ -126,60 +161,18 @@ function MainNav() {
 						</div>
 						{/* Dropdown */}
 						<ul className={'dropdown__list'}>
-							<li className='dropdown__item'>
-								<a
-									href='#armchairs'
-									className='link light shadow'
-									onClick={handleLinkClick}>
-									Armchairs
-								</a>
-							</li>
-							<li className='dropdown__item'>
-								<a
-									href='#two-seat-sofas'
-									className='link light shadow'
-									onClick={handleLinkClick}>
-									Two Seats Sofas
-								</a>
-							</li>
-							<li className='dropdown__item'>
-								<a
-									href='#three-seat-sofas'
-									className='link light shadow'
-									onClick={handleLinkClick}>
-									Three Seats Sofas
-								</a>
-							</li>
+							<NavItems cssClass={'dropdown__item'} config={dropdownConfig} />
 						</ul>
 					</li>
-					<li className='nav__item'>
-						<a href='#showroom' className='link light shadow' onClick={handleLinkClick}>
-							Show room
-						</a>
-					</li>
-					<li className='nav__item'>
-						<a
-							href='#designers'
-							className='link light shadow'
-							onClick={handleLinkClick}>
-							Designers
-						</a>
-					</li>
-					<li className='nav__item'>
-						<a href='#about' className='link light shadow' onClick={handleLinkClick}>
-							About
-						</a>
-					</li>
-					<li className='nav__item'>
-						<a href='#contact' className='link light shadow' onClick={handleLinkClick}>
-							Contact
-						</a>
-					</li>
+					<NavItems cssClass={'nav__item'} config={navItemsConfig} />
 				</ul>
-				{/*
-					Mobile Nav button
-				*/}
-				<button id='burger-btn' className='icon-btn' onClick={openMobileNavBtnClickHandler}>
+
+				{/*	Mobile Nav button */}
+				<button
+					id='burger-btn'
+					className='icon-btn'
+					ref={burgerBtnRef}
+					onClick={openMobileNavBtnClickHandler}>
 					<svg id='burger-icon' className='svg-icon-container svg svg--light'>
 						<use xlinkHref={svgSprite + '#nav'}></use>
 					</svg>
@@ -187,10 +180,12 @@ function MainNav() {
 						<use xlinkHref={svgSprite + '#close'}></use>
 					</svg>
 				</button>
-				{/*
-					Search button
-				*/}
-				<button id='search-btn' className='icon-btn' onClick={searchBtnClickHandler}>
+				{/* Search button */}
+				<button
+					id='search-btn'
+					className='icon-btn'
+					ref={searchBtnRef}
+					onClick={searchBtnClickHandler}>
 					<svg id='search-icon' className='svg-icon-container svg svg--light shadow '>
 						<use xlinkHref={svgSprite + '#search'}></use>
 					</svg>
@@ -201,6 +196,6 @@ function MainNav() {
 			</nav>
 		</div>
 	);
-}
+};
 
 export default MainNav;

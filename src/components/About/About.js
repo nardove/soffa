@@ -2,7 +2,7 @@ import React from 'react';
 import svgSprite from '../../assets/images/assets-sprite.svg';
 import './About.scss';
 
-function About() {
+const About = () => {
 	return (
 		<section id='about' className='about container'>
 			<h2 className='heading heading--medium dark'>About Us</h2>
@@ -31,6 +31,6 @@ function About() {
 			</div>
 		</section>
 	);
-}
+};
 
 export default About;

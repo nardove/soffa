@@ -1,12 +1,12 @@
 import React from 'react';
 import './Contact.scss';
-import svgSprite from '../../assets/images/assets-sprite.svg';
+// import svgSprite from '../../assets/images/assets-sprite.svg';
 
-function Contact() {
-	function validateForm(e) {
+const Contact = () => {
+	const validateForm = (e) => {
 		e.preventDefault();
 		console.log('[Contact.js] validateForm()', e.target);
-	}
+	};
 
 	return (
 		<section id='contact' className='contact container'>
@@ -100,6 +100,6 @@ function Contact() {
 			</div>
 		</section>
 	);
-}
+};
 
 export default Contact;
