@@ -4,7 +4,7 @@ Website for a fictitious brand of designer furniture more specifically armchairs
 
 Build using Reactjs. The site uses a **json** file to store most of the site content like slide show, products and show room.
 
-Visit the site [here](https://sorensecurity.netlify.app/)
+Visit the site [here](https://soffa.netlify.app/)
 
 ## Tools used
 
