@@ -224,4 +224,17 @@ $extra_small: 23.5em; // 375
 			outline: 1px solid $color-dark;
 		}
 	}
+
+	&--darker {
+		border: none;
+		background-color: $color-dark;
+
+		&:hover .svg-icon-container > svg {
+			fill: $color-light;
+		}
+
+		&:focus {
+			outline: 1px solid $color-dark;
+		}
+	}
 }

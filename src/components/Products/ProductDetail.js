@@ -37,24 +37,26 @@ const ProductDetail = (props) => {
 					<div className='content__photo'>
 						<img className='content__photo__img' src={photo} alt={name} />
 					</div>
+					<h4 className='content__title heading heading--small dark'>{name}</h4>
 					<div className='content__details'>
-						<h4 className='heading heading--small dark'>{name}</h4>
 						<p>{description}</p>
-						<div className='content__details__feature'>
-							<div className='svg-icon-container'>
-								<svg className='svg svg--dark'>
-									<use xlinkHref={svgSprite + '#ruler'}></use>
-								</svg>
+						<div className='content__details__features'>
+							<div className='content__details__feature'>
+								<div className='svg-icon-container'>
+									<svg className='svg svg--dark'>
+										<use xlinkHref={svgSprite + '#ruler'}></use>
+									</svg>
+								</div>
+								<span>{dimensions}</span>
 							</div>
-							<span>{dimensions}</span>
-						</div>
-						<div className='content__details__feature'>
-							<div className='svg-icon-container'>
-								<svg className='svg svg--dark'>
-									<use xlinkHref={svgSprite + '#local-shipping'}></use>
-								</svg>
+							<div className='content__details__feature'>
+								<div className='svg-icon-container'>
+									<svg className='svg svg--dark'>
+										<use xlinkHref={svgSprite + '#local-shipping'}></use>
+									</svg>
+								</div>
+								<span>{shipping}</span>
 							</div>
-							<span>{shipping}</span>
 						</div>
 						<div className='content__details__colors'>
 							<p>Select your colour</p>
@@ -69,9 +71,11 @@ const ProductDetail = (props) => {
 							</ul>
 						</div>
 						<div className='content__details__price'>{price}</div>
-						<div className='content__details__btn'>
-							<button className='btn btn--light light'>Add to basket</button>
-						</div>
+						{/* <div className='content__details__btn'> */}
+						<button className='content__details__btn btn btn--darker light'>
+							Add to basket
+						</button>
+						{/* </div> */}
 					</div>
 				</div>
 			</div>
