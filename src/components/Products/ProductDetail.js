@@ -3,12 +3,24 @@ import svgSprite from '../../assets/images/assets-sprite.svg';
 import gsap from 'gsap';
 
 const ProductDetail = (props) => {
-	const { id, name, description, photo, dimensions, shipping, colors, price } = props.data;
+	const {
+		name,
+		description,
+		photo,
+		dimensions,
+		shipping,
+		colors,
+		price,
+	} = props.data;
 
 	const card = React.useRef();
 
 	const openModal = () =>
-		gsap.fromTo(card.current, { x: 100 }, { x: 0, duration: 0.3, ease: 'power3.out' });
+		gsap.fromTo(
+			card.current,
+			{ x: 100 },
+			{ x: 0, duration: 0.3, ease: 'power3.out' },
+		);
 
 	const closeModal = () =>
 		gsap.to(card.current, {
@@ -25,7 +37,9 @@ const ProductDetail = (props) => {
 	return (
 		<div className='product-detail'>
 			<div className='product-detail__card' ref={card}>
-				<button className='product-detail__card__close-btn icon-btn' onClick={closeModal}>
+				<button
+					className='product-detail__card__close-btn icon-btn'
+					onClick={closeModal}>
 					<div className='svg-icon-container'>
 						<svg className='svg svg--darkt'>
 							<use xlinkHref={svgSprite + '#close'}></use>
@@ -35,16 +49,25 @@ const ProductDetail = (props) => {
 
 				<div className='product-detail__content'>
 					<div className='content__photo'>
-						<img className='content__photo__img' src={photo} alt={name} />
+						<img
+							className='content__photo__img'
+							src={photo}
+							alt={name}
+						/>
 					</div>
-					<h4 className='content__title heading heading--small dark'>{name}</h4>
+					<h4 className='content__title heading heading--small dark'>
+						{name}
+					</h4>
 					<div className='content__details'>
 						<p>{description}</p>
 						<div className='content__details__features'>
 							<div className='content__details__feature'>
 								<div className='svg-icon-container'>
 									<svg className='svg svg--dark'>
-										<use xlinkHref={svgSprite + '#ruler'}></use>
+										<use
+											xlinkHref={
+												svgSprite + '#ruler'
+											}></use>
 									</svg>
 								</div>
 								<span>{dimensions}</span>
@@ -52,7 +75,10 @@ const ProductDetail = (props) => {
 							<div className='content__details__feature'>
 								<div className='svg-icon-container'>
 									<svg className='svg svg--dark'>
-										<use xlinkHref={svgSprite + '#local-shipping'}></use>
+										<use
+											xlinkHref={
+												svgSprite + '#local-shipping'
+											}></use>
 									</svg>
 								</div>
 								<span>{shipping}</span>
@@ -65,7 +91,9 @@ const ProductDetail = (props) => {
 									return (
 										<li
 											className='content__details__color-swatch'
-											style={{ backgroundColor: color }}></li>
+											style={{
+												backgroundColor: color,
+											}}></li>
 									);
 								})}
 							</ul>
